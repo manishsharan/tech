@@ -12,7 +12,8 @@ public class UtopianTree {
         String testCaseNum = scanner.nextLine();
         for(int i=0;i<Integer.valueOf(testCaseNum);i++){
             String seasons = scanner.nextLine();
-            System.out.println(findHeight(Integer.valueOf(seasons)));
+            //System.out.println(findHeight(Integer.valueOf(seasons)));
+            System.out.println(findHeightFormula(Integer.valueOf(seasons)));
         }
     }
 
@@ -37,5 +38,19 @@ public class UtopianTree {
 
     private static int summerOperation(int height){
         return height+1;
+    }
+
+    public static int findHeightFormula(int numSeasons){
+        double height = 1;
+        if(numSeasons>0) {
+            if (numSeasons % 2 == 0) height = calcHeight(numSeasons);
+            else height = calcHeight(numSeasons+1)-1;
+        }
+        return (int)height;
+    }
+
+    private static int calcHeight(int numSeasons){
+        int remainder = numSeasons/2;
+        return (int)Math.pow(2, (remainder + 1)) - 1;
     }
 }
