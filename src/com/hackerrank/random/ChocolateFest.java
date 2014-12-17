@@ -15,17 +15,18 @@ public class ChocolateFest {
     }
 
     private static int Solve(int moneyAvailable, int pricePerChoco, int wrappersReqd){
-        int directBuy = moneyAvailable/pricePerChoco;
-        if(directBuy<wrappersReqd){
-            return  directBuy;
-        }else if(directBuy==wrappersReqd){
-            return directBuy+1;
+        int chocosGot = moneyAvailable/pricePerChoco;
+        if(chocosGot<wrappersReqd){
+            return  chocosGot;
+        }else if(chocosGot==wrappersReqd){
+            return chocosGot+1;
         }else{
-            if((directBuy / wrappersReqd)%2==0) {
-                return directBuy + (directBuy / wrappersReqd);
-            }else{
-               return directBuy + (directBuy / wrappersReqd)+((directBuy / wrappersReqd)+1)/wrappersReqd;
+            int wrappersObtained = chocosGot;
+            while(wrappersObtained>=wrappersReqd){
+                chocosGot+=wrappersObtained/wrappersReqd;
+                wrappersObtained=(wrappersObtained/wrappersReqd)+(wrappersObtained%wrappersReqd);
             }
+            return chocosGot;
         }
     }
 }
