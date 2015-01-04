@@ -1,7 +1,5 @@
 package com.hackerrank.sort;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 /**
  * Created by manish.sharan on 25/12/14.
  */
